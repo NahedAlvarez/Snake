@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources tools:keep="@string/firebase_database_url,@string/gcm_defaultSenderId,@string/google_storage_bucket,@string/project_id,@string/google_api_key,@string/google_crash_reporting_api_key,@string/google_app_id,@string/default_web_client_id" xmlns:tools="http://schemas.android.com/tools">
+  <string name="firebase_database_url" translatable="false">https://snakeandroid7u7.firebaseio.com</string>
+  <string name="gcm_defaultSenderId" translatable="false">844609505982</string>
+  <string name="google_storage_bucket" translatable="false">snakeandroid7u7.appspot.com</string>
+  <string name="project_id" translatable="false">snakeandroid7u7</string>
+  <string name="google_api_key" translatable="false">AIzaSyBMZjc68AKyjJ8mizu2BuTjddhK-i46wng</string>
+  <string name="google_crash_reporting_api_key" translatable="false">AIzaSyBMZjc68AKyjJ8mizu2BuTjddhK-i46wng</string>
+  <string name="google_app_id" translatable="false">1:844609505982:android:8675b31f4ff67210</string>
+  <string name="default_web_client_id" translatable="false">844609505982-23dht669hd514d62q71td8jgt081canh.apps.googleusercontent.com</string>
+</resources>

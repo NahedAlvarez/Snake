@@ -28,7 +28,30 @@ public class Snake : MonoBehaviour
     private void Start()
     {
         InvokeRepeating("Move",frameRate,frameRate);
+        BaseFireOk();
     }
+
+    void BaseFireOk()
+    {
+        Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task => {
+            var dependencyStatus = task.Result;
+            if (dependencyStatus == Firebase.DependencyStatus.Available)
+            {
+                // Create and hold a reference to your FirebaseApp,
+                // where app is a Firebase.FirebaseApp property of your application class.
+                //   app = Firebase.FirebaseApp.DefaultInstance;
+                Debug.Log("Connected FireBase");
+                // Set a flag here to indicate whether Firebase is ready to use by your app.
+            }
+            else
+            {
+                UnityEngine.Debug.LogError(System.String.Format(
+                  "Could not resolve all Firebase dependencies: {0}", dependencyStatus));
+                // Firebase Unity SDK is not safe to use here.
+            }
+        });
+    }
+
 
     void Move()
     {
@@ -69,21 +92,21 @@ public class Snake : MonoBehaviour
 
     void MoveSnake()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.UpArrow) &&  dir != Direction.down)
         {
             dir = Direction.up;
         }
 
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
+        else if (Input.GetKeyDown(KeyCode.DownArrow) && dir != Direction.up)
         {
             dir = Direction.down;
         }
 
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+        else if (Input.GetKeyDown(KeyCode.LeftArrow) && dir != Direction.right)
         {
             dir = Direction.left;
         }
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
+        else if (Input.GetKeyDown(KeyCode.RightArrow) && dir != Direction.left)
         {
             dir = Direction.right;
         }
@@ -103,5 +126,7 @@ public class Snake : MonoBehaviour
             UnityEngine.SceneManagement.SceneManager.LoadScene(0);
         }
     }
+
+
 
 }
